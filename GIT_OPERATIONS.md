@@ -5,7 +5,7 @@
 
 
 ## Initialize Git repository and add origin
-![git init ; git remote add origin %REPO_URL%] (src/git_operations/git_init and git add origin.jpg)
+![git init ; git remote add origin %REPO_URL%] (file:///src/git_operations/git_init and git add origin.jpg)
 
 
 ## Git add files to commit
