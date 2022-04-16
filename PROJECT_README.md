@@ -2,11 +2,9 @@
 
 ### This project will explore various aspects of React, Redux, Webpack, CSS and dwelve deeper into the internals of each technology.
 
-<br/>
 
 ### To learn more about how this project was created, kindly go through [README.md](README.md)
 
-<br/>
 
 ## React
 We will be exploring various aspects of React 
