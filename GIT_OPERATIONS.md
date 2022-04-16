@@ -5,16 +5,16 @@
 
 
 ## Initialize Git repository and add origin
-![git init ; git remote add origin %REPO_URL%](file:///src/git_operations/git_init and git add origin.jpg)
+![`git init` ; `git remote add origin %REPO_URL%`](./src/git_operations/git_init%20and%20git%20add%20origin.jpg)
 
 
 ## Git add files to commit
-![git add .](src/git_operations/git first add and first commit.jpg)
+![`git add .`](./src/git_operations/git%20first%20add%20and%20first%20commit.jpg)
 
 
 ## Git first commit
-![git commit -m "message"](src/git_operations/git actual commit.jpg)
+![`git commit -m "message"`](./src/git_operations/git%20actual%20commit.jpg)
 
 
 ## Git first push and Git configure credentials
-![git config; git push](src/git_operations/git first push by configuring git credentials.jpg)
+![`git config` ; `git push`](./src/git_operations/git%20first%20push%20by%20configuring%20git%20credentials.jpg)
