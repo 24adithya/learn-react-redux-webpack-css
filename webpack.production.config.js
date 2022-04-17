@@ -20,7 +20,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const DynamicCDNPlugin = require('dynamic-cdn-webpack-plugin');
 
 //### combine common webpack config with current webpack config
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 
 //### Clean webpack clears old `contentHash` files
 const CleanWebpackPlugin = require("clean-webpack-plugin");

@@ -1,6 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const commonConfig = require('./webpack.common.config');
+
+//### combine common webpack config with current webpack config
+const {merge} = require('webpack-merge');
+
 const pluginList = [
   new HtmlWebpackPlugin(
       {
@@ -10,7 +15,8 @@ const pluginList = [
   )
 ]
 
-module.exports = {
+module.exports = merge(commonConfig, {
+  mode:'development',
   output: {
     path: path.join(__dirname, '/dist'),
     //### name in square brackets indicates multiple entry points
@@ -31,9 +37,9 @@ module.exports = {
   },
   //...
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000,
+    port: 9001,
     historyApiFallback: true
   }
-};
+});
