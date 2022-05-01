@@ -1,24 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import { userStyles } from '../styles/mainStyles';
+
+import { StyledTextField, StyledSubmitButton, StyledBox } from '../styles/mainStyles';
 
 
-export const Home = () => {
+const Login = () => {
 
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    }
 
     return (
         <div>
             <h3>
                 Enter Login Details
-                <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <TextField
+                <StyledBox>
+                <StyledTextField
                     id="input-with-icon-textfield"
                     label="Username"
+                    onChange={handleUsernameChange}
                     InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -28,10 +38,11 @@ export const Home = () => {
                     }}
                     variant="standard"
                 />
-                <TextField
+                <StyledTextField
                     type="password"
                     id="input-with-icon-password"
                     label="Password"
+                    onChange={handlePasswordChange}
                     InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -41,9 +52,13 @@ export const Home = () => {
                     }}
                     variant="standard"
                 />
-                </Box>
+                </StyledBox>
+
+                <StyledSubmitButton variant="outlined">Outlined</StyledSubmitButton>
             </h3>
         </div>
     );
     
 }
+
+export default Login;

@@ -7,7 +7,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 
-export const Home = () => {
+const Home = () => {
 
     const [welcomeMessage, setWelcomeMessage] = useState('Hello World!');
 
@@ -20,3 +20,5 @@ export const Home = () => {
     );
     
 }
+
+export default Home;

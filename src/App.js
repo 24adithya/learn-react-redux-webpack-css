@@ -1,21 +1,14 @@
 import logo from './logo.svg';
+import AppContents from './AppContents'; 
 import './App.css';
+import {applicationTheme} from './styles/mainStyles'
+import { ThemeProvider } from '@mui/system';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React-Redux-Webpack-CSS
-        </a>
-      </header>
-    </div>
+     <ThemeProvider theme={applicationTheme}>
+       <AppContents/>
+     </ThemeProvider>
   );
 }
 
