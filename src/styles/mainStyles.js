@@ -1,8 +1,7 @@
 import { styled, createTheme, ThemeProvider, fontSize } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import {Button, TextField, Box, Popover} from '@mui/material';
+
 
 const genericProps = {
   fontSize:12  
@@ -33,6 +32,10 @@ export const applicationTheme = createTheme({
   export const StyledBox = styled(Box)(({ theme }) => ({
     fontSize: genericProps.fontSize,
     '& > :not(style)' : { m: 1 }
+  }));
+
+  export const StyledPopOver = styled(Popover)(({ theme }) => ({
+    fontSize: genericProps.fontSize
   }));
 
 // export const userStyles = {

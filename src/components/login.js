@@ -54,7 +54,7 @@ const Login = () => {
                 />
                 </StyledBox>
 
-                <StyledSubmitButton variant="outlined">Outlined</StyledSubmitButton>
+                <StyledSubmitButton variant="outlined">Submit</StyledSubmitButton>
             </h3>
         </div>
     );

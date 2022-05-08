@@ -3,12 +3,17 @@ import AppContents from './AppContents';
 import './App.css';
 import {applicationTheme} from './styles/mainStyles'
 import { ThemeProvider } from '@mui/system';
+import {HashRouter as Router} from 'react-router-dom';
 
 const App = () => {
   return (
-     <ThemeProvider theme={applicationTheme}>
+    <>
+    <Router>
+     
        <AppContents/>
-     </ThemeProvider>
+     
+     </Router>
+     </>
   );
 }
 

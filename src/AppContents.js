@@ -5,8 +5,10 @@ import Login from './components/login';
 
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 
-import {HashRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom'
-import { Popover, Box, Card, Tab, Tabs, MenuItem } from '@mui/material';
+import {Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Box, Tab, Tabs, MenuItem, AppBar } from '@mui/material';
+
+import {StyledPopOver} from './styles/mainStyles';
 
 import _ from 'lodash';
 
@@ -15,20 +17,17 @@ const AppContents = (props) => {
     const allTabs = ['/residential-home', '/login', '/downtown-home']
     const homeLabels= ['Residential', 'Downtown'];
     
-    const [value, setValue] = useState(location.hash.substring(1));
+    const [value, setValue] = useState(allTabs[0]);
 
     const [homeLabel, setHomeLabel] = useState(homeLabels[0]);
-    const [homeTabAnchorEl, setHomeTabAncholEl] = useState(null);
+    const [homeTabAnchorEl, setHomeTabAnchorEl] = useState(null);
 
     const [loginLabel, setLoginLabel] = useState('Login');
 
     const[ homeDropDownValue, setHomeDropDownValue] = useState(allTabs[0]);
 
-    // const appStyles = userStyles();
-    const history = require('history').createHashHistory();
+    const history = useNavigate();
     
-    const homeDropDownLabels = ['/downtown', 'residential']
-
     const defaultPath = allTabs[0];
 
     const handleValueChange = (event, newValue) => {
@@ -37,15 +36,15 @@ const AppContents = (props) => {
 
     const handleHomeTabClick = (event) => {
         event.stopPropagation();
-        setHomeTabAncholEl(event.currentTarget);
+        setHomeTabAnchorEl(event.currentTarget);
     }
 
     const handleHomeTabClose = () => {
-        setHomeTabAncholEl(null);
+        setHomeTabAnchorEl(null);
     }
 
     const handleHomeMenuItemClick = (value, label) => {
-        history.push(value);
+        history(value);
         setHomeDropDownValue(value);
         setValue(value);
         setHomeLabel(label);
@@ -53,39 +52,41 @@ const AppContents = (props) => {
     }
 
     return(
-        <Router>
         <Box>
-        <Tabs value={value === '/' ? defaultPath : value}>
+            
+        <Tabs value={value === '/' ? defaultPath : value} onChange={handleValueChange}>
             <Tab label={homeLabel} value={homeDropDownValue} icon={<ArrowDropDown onClick={handleHomeTabClick}/>}
             component={Link} to={homeDropDownValue}>
                 </Tab>
                 <Tab  label={loginLabel} value={allTabs[1]} component={Link} to={allTabs[1]}>
                 </Tab>
         </Tabs>
+        
 
-        <Popover
+        <StyledPopOver
             open={!_.isNull(homeTabAnchorEl)}
             anchorEl={homeTabAnchorEl}
-            anchorOrigin={{vertical:'top', horizontal: 'center'}}
+            anchorOrigin={{vertical:'left', horizontal: 'left'}}
         >
 
             <MenuItem onClick={() => handleHomeMenuItemClick(allTabs[0], homeLabels[0])}>
                 {homeLabels[0]}
             </MenuItem>
-            <MenuItem onClick={() => handleHomeMenuItemClick(allTabs[2], homeLabels[2])}>
-                {homeLabels[2]}
+            <MenuItem onClick={() => handleHomeMenuItemClick(allTabs[2], homeLabels[1])}>
+                {homeLabels[1]}
             </MenuItem>
 
-        </Popover>
+        </StyledPopOver>
         <Routes>
             {/* <Route path={allTabs.length} exact>
                 <Navigate to={allTabs[0]}/>
             </Route> */}
-            <Route path={allTabs[0]} exact render={() => <Home additionalParams={props.userDetails}/>} />
-            <Route path={allTabs[1]} exact render={() => <Login additionalParams={props.userDetails}/>} />
+            <Route path={allTabs[0]} exact element={ <Home />} />
+            <Route path={allTabs[2]} exact element={ <Home />} />
+            <Route path={allTabs[1]} exact element={ <Login />} />
         </Routes>
+        
         </Box>
-        </Router>
     );
 }
 
